@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.container {
+  background: #111111;
+  background-image: url(./image.png);
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper p {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  z-index: 9999;
+  font-size: 48px;
+  margin-bottom: 120px;
+}
+.wrapper p::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: #111111;
+  z-index: -1;
+  border-radius: 50%;
+  left: -31%;
+  top: -118%;
+  animation-name: shine;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+@keyframes shine {
+  0%,
+  100% {
+    box-shadow: 0px 0px 32px -12px rgba(255, 255, 255, 5);
+  }
+  50% {
+    box-shadow: 0px 0px 32px 3px rgba(255, 255, 255, 5);
+  }
+}
+button {
+  background-color: #111111;
+  padding: 10px 38px;
+  border: 2px solid #a9a9a9;
+  color: #fff;
+  transition: all 0.2s ease;
+  cursor: pointer; 
+}
+
+button:not(:last-child) {
+  margin-right: 20px;
+}
+
+button:hover,
+button:focus {
+  border-color: #111111;
+  color: #fff;
+  box-shadow: 0px 4px 27px -12px #a9a9a9;
+}
+
+@media (max-width: 768px) {
+  button {
+    padding: 8px 30px; 
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 6px 20px; 
+    font-size: 14px; 
+    margin-right: 10px;
+  }
+}
