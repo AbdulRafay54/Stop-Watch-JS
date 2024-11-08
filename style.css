@@ -1,83 +1,142 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Source Sans Pro", sans-serif;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
-  background: #111111;
-  background-image: url(./image.png);
-  height: 100vh;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(125deg, #483D8B, #6A5ACD, #4682B4, #00CED1, #FFD700);
+    color: #ffffff;
+    background-size: 400% 400%;
+    animation: modern-background 15s ease infinite;
 }
 
-.wrapper p {
-  position: relative;
-  display: inline-block;
-  color: #ffffff;
-  z-index: 9999;
-  font-size: 48px;
-  margin-bottom: 120px;
-}
-.wrapper p::before {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background-color: #111111;
-  z-index: -1;
-  border-radius: 50%;
-  left: -31%;
-  top: -118%;
-  animation-name: shine;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-@keyframes shine {
-  0%,
-  100% {
-    box-shadow: 0px 0px 32px -12px rgba(255, 255, 255, 5);
-  }
-  50% {
-    box-shadow: 0px 0px 32px 3px rgba(255, 255, 255, 5);
-  }
-}
-button {
-  background-color: #111111;
-  padding: 10px 38px;
-  border: 2px solid #a9a9a9;
-  color: #fff;
-  transition: all 0.2s ease;
-  cursor: pointer; 
+@keyframes modern-background {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
-button:not(:last-child) {
-  margin-right: 20px;
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-button:hover,
-button:focus {
-  border-color: #111111;
-  color: #fff;
-  box-shadow: 0px 4px 27px -12px #a9a9a9;
+.stop-box {
+    background: rgba(20, 20, 20, 0.85);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  button {
-    padding: 8px 30px; 
+.stop-box:hover {
+    transform: scale(1.05);
+}
+
+.header h2 {
+    font-size: 26px;
+    color: #FFD700;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 24px;
+    gap: 12px;
+}
+
+.timer div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #00FA9A;
+}
+
+.mn {
+    font-size: 12px;
+    color: #cccccc;
+}
+
+.btn {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media(min-width: 768px) {
+    .btn {
+        flex-direction: row;
+    }
+}
+
+.btn1 {
+    padding: 14px 22px;
     font-size: 16px;
-  }
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
 }
 
-@media (max-width: 480px) {
-  button {
-    padding: 6px 20px; 
-    font-size: 14px; 
-    margin-right: 10px;
-  }
+.blue {
+    background-color: #1E90FF;
+    box-shadow: 0 6px 12px rgba(30, 144, 255, 0.4);
+}
+
+.blue:hover {
+    background-color: #187bcd;
+}
+
+.green {
+    background-color: #32CD32;
+    box-shadow: 0 6px 12px rgba(50, 205, 50, 0.4);
+}
+
+.green:hover {
+    background-color: #2e8b57;
+}
+
+.red {
+    background-color: #ff4d4d;
+    box-shadow: 0 6px 12px rgba(255, 77, 77, 0.4);
+}
+
+.red:hover {
+    background-color: #e63946;
+}
+
+.orange {
+    background-color: #ff8c00;
+    box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+}
+
+.orange:hover {
+    background-color: #e67e22;
 }

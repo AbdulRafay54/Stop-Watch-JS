@@ -1,66 +1,73 @@
-let seconds = 0;
-let tens = 0;
+let min = document.getElementById("min");
+let sec = document.getElementById("sec");
+let mili = document.getElementById("ms");
+
 let mint = 0;
-let hour = 0;
-let getSeconds = document.querySelector(".seconds");
-let getTens = document.querySelector(".tens");
-let getMint = document.querySelector(".mint");
-let getHour = document.querySelector(".hour");
-let btnStart = document.querySelector(".btn-start");
-let btnStop = document.querySelector(".btn-stop");
-let btnReset = document.querySelector(".btn-reset");
-let interval;
+let second = 0;
+let miliSec = 0;
+let timer = false;
 
-btnStart.addEventListener("click", () => {
-  if (!interval) {
-    interval = setInterval(startTimer, 10);
-  }
-});
+function start() {
 
-btnStop.addEventListener("click", () => {
-  clearInterval(interval);
-  interval = null;
-});
+    if (timer) {
+        clearInterval(starter());
+        timer = false;
+        event.target.innerText = "START";
+        document.getElementById("btns").style.backgroundColor = "#0d6db7"
+        document.getElementById("btns").style.color = "white"
+    }
+    else {
+        timer = true;
+        starter()
+        event.target.innerText = "STOP";
+        document.getElementById("btns").style.backgroundColor = "white"
+        document.getElementById("btns").style.color = "#0d6db7"
+    }
 
-btnReset.addEventListener("click", () => {
-  clearInterval(interval);
-  interval = null;
+}
 
-  tens = "00";
-  seconds = "00";
-  mint = "00";
-  hour = "00";
-  getSeconds.innerHTML = seconds;
-  getTens.innerHTML = tens;
-  getMint.innerHTML = mint;
-  getHour.innerHTML = hour;
-});
 
-function startTimer() {
-  tens++;
-  if (tens <= 9) {
-    getTens.innerHTML = "0" + tens;
-  }
-  if (tens > 9) {
-    getTens.innerHTML = tens;
-  }
-  if (tens > 99) {
-    seconds++;
-    getSeconds.innerHTML = "0" + seconds;
-    tens = 0;
-    getTens.innerHTML = "0" + 0;
-  }
-  if (seconds > 9) {
-    getSeconds.innerHTML = seconds;
-  }
-  if (seconds > 60) {
-    mint++;
-    getMint.innerHTML = "0" + mint;
-    seconds = 0;
-    getSeconds.innerHTML = "0" + 0
+function stop() {
+    timer = false;
+    starter()
+}
 
-  }
-  if (mint > 99) {
-    getMint.innerHTML = mint;
-  }
+function reset() {
+    window.location.reload()
+}
+
+
+let getmili = miliSec;
+let getmint = mint;
+let getsec = second
+
+
+function starter() {
+
+    if (timer == true) {
+        miliSec++
+        console.log(miliSec)
+        if (miliSec == 100) {
+            second++;
+            miliSec = 0;
+        }
+        if (second == 60) {
+            mint++
+            second = 0;
+        }
+        let getmint = mint;
+        let getsec = second;
+        if (second < 10) {
+            getsec = "0" + second;
+        }
+        if (mint < 10) {
+            getmint = "0" + mint
+        }
+
+        setTimeout("starter()", 10)
+        mili.innerHTML = miliSec;
+        min.innerHTML = getmint;
+        sec.innerHTML = getsec;
+    }
+
 }
